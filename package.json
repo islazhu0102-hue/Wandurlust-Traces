@@ -1,0 +1,14 @@
+{
+  "name": "luminary-app",
+  "version": "1.0.0",
+  "description": "Luminary AI Travel Journal",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "vite"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "vite": "^4.0.0"
+  }
+}

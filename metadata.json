@@ -1,0 +1,5 @@
+{
+  "name": "Wanderlust Traces - AI Travel Journal",
+  "description": "A location-based travel journal agent that uses Gemini to reflect on your journey.",
+  "requestFramePermissions": []
+}

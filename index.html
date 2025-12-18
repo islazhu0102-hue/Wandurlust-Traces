@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wanderlust Traces - AI Travel Journal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              stone: {
+                50: '#fafaf9',
+                100: '#f5f5f4',
+                200: '#e7e5e4',
+                300: '#d6d3d1',
+                400: '#a8a29e',
+                500: '#78716c',
+                600: '#57534e',
+                700: '#44403c',
+                800: '#292524',
+                900: '#1c1917',
+              },
+              primary: {
+                light: '#B67558', 
+                DEFAULT: '#A05C3B', // Terracotta Red
+                dark: '#7D4229', 
+              },
+              pastel: {
+                gold: '#D9C7A7', // Straw Gold
+                lavender: '#A89FAC', // Lavender Grey
+                sand: '#F2F0E9',
+              }
+            },
+            fontFamily: {
+              serif: ['"Cormorant Garamond"', 'serif'],
+              sans: ['"Montserrat"', 'sans-serif'],
+              ui: ['"Inter"', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet CSS & JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    
+    <style>
+      body {
+        background-color: #A89FAC; /* Lavender Grey */
+        color: #44403c;
+      }
+      
+      /* Grain Texture Overlay */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.04;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+
+      /* Custom scrollbar */
+      .journal-scroll::-webkit-scrollbar {
+        width: 6px;
+      }
+      .journal-scroll::-webkit-scrollbar-track {
+        background: rgba(0,0,0,0.05);
+      }
+      .journal-scroll::-webkit-scrollbar-thumb {
+        background-color: #A05C3B;
+        border-radius: 20px;
+        opacity: 0.5;
+      }
+      
+      /* Leaflet Customizations for Watercolor/Pencil feel */
+      .leaflet-container {
+        background: #DCE3EB; /* Muted Blue-Grey background for Ocean */
+        font-family: "Montserrat", sans-serif;
+      }
+      
+      .vintage-map-filter .leaflet-tile-pane {
+        filter: sepia(0.15) saturate(0.9) contrast(1.1) brightness(1.05);
+      }
+      
+      /* Custom Marker Styles */
+      .custom-div-icon {
+        background: transparent;
+        border: none;
+      }
+      
+      /* Smooth transitions for everything */
+      * {
+        transition-property: color, background-color, border-color, transform, opacity;
+        transition-duration: 200ms;
+        transition-timing-function: ease-out;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
